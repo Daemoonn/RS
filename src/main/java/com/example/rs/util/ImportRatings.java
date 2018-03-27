@@ -14,10 +14,10 @@ import java.util.List;
 
 public class ImportRatings {
 
-	public final static String TABLE_NAME = "ratings";
-	public final static String USER_ID_COLUMN = "userID";
-	public final static String MOVIE_ID_COLUMN = "movieID";
-	public final static String RATING = "rating";
+	public final static String TABLE_NAME = "taste_preferences";
+	public final static String USER_ID_COLUMN = "user_id";
+	public final static String MOVIE_ID_COLUMN = "item_id";
+	public final static String RATING = "preference";
 	public final static String TIMESTAMP = "timestamp";
 	public static int count;
 	/**
@@ -50,8 +50,8 @@ public class ImportRatings {
 
 		String[] ra = line.split(",");
 		Rating rating = new Rating();
-		rating.setUser_id(Integer.parseInt(ra[0]));
-		rating.setMovie_id(Integer.parseInt(ra[1]));
+		rating.setUser_id(Long.parseLong(ra[0]));
+		rating.setMovie_id(Long.parseLong(ra[1]));
 		rating.setRating(Float.parseFloat(ra[2]));
 		rating.setTimestamp(Integer.parseInt(ra[3]));
 		return rating;
@@ -70,8 +70,8 @@ public class ImportRatings {
 			ps = conn.prepareStatement(sql);
 
 			for (Rating rating : ratings) {
-				ps.setInt(1, rating.getUser_id());
-				ps.setInt(2, rating.getMovie_id());
+				ps.setLong(1, rating.getUser_id());
+				ps.setLong(2, rating.getMovie_id());
 				ps.setFloat(3, rating.getRating());
 				ps.setInt(4, rating.getTimestamp());
 				ps.addBatch();

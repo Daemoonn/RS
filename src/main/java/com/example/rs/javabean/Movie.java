@@ -10,7 +10,7 @@ public class Movie {
 	public static final String NAME = "title";
 	public static final String YEAR = "published_year";
 	public static final String TYPE = "genres";
-	private int id;
+	private long id;
 	private String name;
 	private String year;
 	private List<String> type;
@@ -18,18 +18,18 @@ public class Movie {
 	public Movie() {
 	}
 
-	public Movie(int id, String name, String year, List<String> type) {
+	public Movie(long id, String name, String year, List<String> type) {
 		this.id = id;
 		this.name = name;
 		this.year = year;
 		this.type = type;
 	}
 
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

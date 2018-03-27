@@ -62,7 +62,7 @@ public class ImportMovies {
 			ps = conn.prepareStatement(sql);
 
 			for (Movie movie : movies) {
-				ps.setInt(1, movie.getId());
+				ps.setLong(1, movie.getId());
 				ps.setString(2, movie.getName());
 				if (movie.getYear() != null) {
 					ps.setString(3, movie.getYear());
@@ -98,7 +98,7 @@ public class ImportMovies {
 		} else {
 			mo = line.split(",");
 		}
-		movie.setId(Integer.parseInt(mo[0]));
+		movie.setId(Long.parseLong(mo[0]));
 
 		if (mo[1].contains("(")) {
 			String tname = mo[1].substring(0, mo[1].lastIndexOf("(") - 1);

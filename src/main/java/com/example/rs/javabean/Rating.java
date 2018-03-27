@@ -1,24 +1,24 @@
 package com.example.rs.javabean;
 
 public class Rating {
-	private int user_id;
-	private int movie_id;
+	private long user_id;
+	private long movie_id;
 	private float rating;
 	private int timestamp;
 
-	public int getUser_id() {
+	public long getUser_id() {
 		return this.user_id;
 	}
 
-	public void setUser_id(int user_id) {
+	public void setUser_id(long user_id) {
 		this.user_id = user_id;
 	}
 
-	public int getMovie_id() {
+	public long getMovie_id() {
 		return this.movie_id;
 	}
 
-	public void setMovie_id(int movie_id) {
+	public void setMovie_id(long movie_id) {
 		this.movie_id = movie_id;
 	}
 
