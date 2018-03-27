@@ -14,21 +14,26 @@ import java.util.List;
 
 public class ImportRatings {
 
-	public final static String TABLE_NAME = "movie_preferences";
+	public final static String TABLE_NAME = "ratings";
 	public final static String USER_ID_COLUMN = "userID";
 	public final static String MOVIE_ID_COLUMN = "movieID";
-	public final static String RATING = "preference";
+	public final static String RATING = "rating";
 	public final static String TIMESTAMP = "timestamp";
+	public static int count;
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		try {
 			LineNumberReader lineReader = new LineNumberReader(new FileReader(
-					"movielens/ratings.dat"));
+					"data/ml-latest-small/ratings.csv"));
 			String line = "";
 			List<Rating> ratingList = new ArrayList<Rating>();
+			count = 0;
 			while ((line = lineReader.readLine()) != null) {
+				count++;
+				if (count % 100 == 0)
+					System.out.println(count);
 				ratingList.add(fillRating(line));
 			}
 			insertRatings(ratingList);
@@ -43,11 +48,11 @@ public class ImportRatings {
 	
 	private static Rating fillRating(String line) {
 
-		String[] ra = line.split("::");
+		String[] ra = line.split(",");
 		Rating rating = new Rating();
 		rating.setUser_id(Integer.parseInt(ra[0]));
 		rating.setMovie_id(Integer.parseInt(ra[1]));
-		rating.setRating(Integer.parseInt(ra[2]));
+		rating.setRating(Float.parseFloat(ra[2]));
 		rating.setTimestamp(Integer.parseInt(ra[3]));
 		return rating;
 	}
@@ -67,7 +72,7 @@ public class ImportRatings {
 			for (Rating rating : ratings) {
 				ps.setInt(1, rating.getUser_id());
 				ps.setInt(2, rating.getMovie_id());
-				ps.setInt(3, rating.getRating());
+				ps.setFloat(3, rating.getRating());
 				ps.setInt(4, rating.getTimestamp());
 				ps.addBatch();
 			}

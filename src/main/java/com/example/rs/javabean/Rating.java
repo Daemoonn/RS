@@ -3,7 +3,7 @@ package com.example.rs.javabean;
 public class Rating {
 	private int user_id;
 	private int movie_id;
-	private int rating;
+	private float rating;
 	private int timestamp;
 
 	public int getUser_id() {
@@ -22,11 +22,11 @@ public class Rating {
 		this.movie_id = movie_id;
 	}
 
-	public int getRating() {
+	public float getRating() {
 		return this.rating;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(float rating) {
 		this.rating = rating;
 	}
 
