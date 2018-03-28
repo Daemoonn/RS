@@ -47,7 +47,6 @@ public class ImportRatings {
 	}
 	
 	private static Rating fillRating(String line) {
-
 		String[] ra = line.split(",");
 		Rating rating = new Rating();
 		rating.setUser_id(Long.parseLong(ra[0]));

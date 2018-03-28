@@ -3,8 +3,7 @@ package com.example.rs.util;
 import java.util.Collection;
 
 public class StringUtil {
-	public static String connectString(Collection<String> stringList,
-                                       String split) {
+	public static String connectString(Collection<String> stringList, String split) {
 		StringBuilder builder = new StringBuilder();
 		boolean flag = false;
 
