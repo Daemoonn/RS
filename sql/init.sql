@@ -26,7 +26,6 @@ CREATE TABLE taste_preferences (
    INDEX (user_id),
    INDEX (item_id)
 );
-
 -- maybe won't use the two below
 CREATE TABLE taste_item_similarity (
   item_id_a BIGINT NOT NULL,
@@ -39,3 +38,19 @@ CREATE TABLE recommendations (
     item_ids VARCHAR(255) DEFAULT 'no recommendations',
     PRIMARY KEY (user_id)
 );
+-- save the movie details from douban api
+CREATE TABLE movies_details (
+	movieId BIGINT NOT NULL,
+    url_id VARCHAR(255) DEFAULT NULL,
+    en_title VARCHAR(255) DEFAULT NULL,
+    cn_title VARCHAR(255) DEFAULT NULL,
+    published_year VARCHAR(255) DEFAULT NULL,
+    img_link VARCHAR(255) DEFAULT NULL,
+    page_link VARCHAR(255) DEFAULT NULL,
+    PRIMARY KEY (movieId)
+);
+-- after fill up data in the tables
+-- backup movies_details into movies_details_back
+CREATE TABLE movies_details_back (SELECT * FROM movies_details);
+-- add summary column into movies_details
+ALTER TABLE movies_details ADD summary VARCHAR(5000) DEFAULT NULL;
