@@ -38,7 +38,7 @@ CREATE TABLE recommendations (
     item_ids VARCHAR(255) DEFAULT 'no recommendations',
     PRIMARY KEY (user_id)
 );
--- save the movie details from douban api
+-- save the movie details crawled from douban
 CREATE TABLE movies_details (
 	movieId BIGINT NOT NULL,
     url_id VARCHAR(255) DEFAULT NULL,
