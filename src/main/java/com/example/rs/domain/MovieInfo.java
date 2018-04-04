@@ -1,7 +1,7 @@
 /**
  * movie的javabean
  */
-package com.example.rs.javabean;
+package com.example.rs.domain;
 
 public class MovieInfo {
 	private String name;

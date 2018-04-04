@@ -1,4 +1,4 @@
-package com.example.rs.javabean;
+package com.example.rs.domain;
 
 public class Rating {
 	private long user_id;

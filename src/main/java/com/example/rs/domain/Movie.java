@@ -1,4 +1,4 @@
-package com.example.rs.javabean;
+package com.example.rs.domain;
 
 import com.example.rs.util.*;
 import java.util.List;

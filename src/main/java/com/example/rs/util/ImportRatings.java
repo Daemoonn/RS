@@ -1,6 +1,6 @@
 package com.example.rs.util;
 
-import com.example.rs.javabean.*;
+import com.example.rs.domain.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.rs.javabean.*;
+import com.example.rs.domain.*;
 
 public class ImportMovies {
 	public final static String TABLE_NAME = "movies";
