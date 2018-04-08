@@ -6,10 +6,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Movie {
-	public static final String ID = "movieId";
-	public static final String NAME = "title";
-	public static final String YEAR = "published_year";
-	public static final String TYPE = "genres";
 	private long id;
 	private String name;
 	private String year;
@@ -55,19 +51,6 @@ public class Movie {
 
 	public void setType(List<String> type) {
 		this.type = type;
-	}
-
-	public double relevance(Movie m) {
-		String patternString = StringUtil.connectString(this.type, "|");
-		Pattern pattern = Pattern.compile(patternString);
-		int count = 0;
-		for (String mType : m.getType()) {
-			Matcher matcher = pattern.matcher(mType);
-			if (matcher.matches()) {
-				count++;
-			}
-		}
-		return Math.log10(count + 1);
 	}
 
 	public String toString() {

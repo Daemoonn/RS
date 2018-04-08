@@ -54,3 +54,11 @@ CREATE TABLE movies_details (
 CREATE TABLE movies_details_back (SELECT * FROM movies_details);
 -- add summary column into movies_details
 ALTER TABLE movies_details ADD summary VARCHAR(5000) DEFAULT NULL;
+
+CREATE TABLE movies_details_back_3
+SELECT movies.movieId, url_id, title as 'en_title', cn_title, genres, movies.published_year, img_link, page_link, summary
+FROM movies LEFT JOIN movies_details
+ON movies.movieId = movies_details.movieId;
+
+DROP TABLE movies_details;
+CREATE TABLE movies_details SELECT * FROM movies_details_back_3;

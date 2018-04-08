@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.rs.dao.MovieDetailDao">
+    <resultMap id="BaseResultMap" type="com.example.rs.domain.MovieDetail">
+        <id column="movieId" property="movieId" jdbcType="BIGINT"/>
+        <result column="url_id" property="url_id" jdbcType="VARCHAR"/>
+        <result column="en_title" property="en_title" jdbcType="VARCHAR"/>
+        <result column="cn_title" property="cn_title" jdbcType="VARCHAR"/>
+        <result column="genres" property="genres" jdbcType="VARCHAR"/>
+        <result column="published_year" property="published_year" jdbcType="VARCHAR"/>
+        <result column="img_link" property="img_link" jdbcType="VARCHAR"/>
+        <result column="page_link" property="page_link" jdbcType="VARCHAR"/>
+        <result column="summary" property="summary" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectConditions" resultMap="BaseResultMap">
+        SELECT * FROM `movies_details`
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="movieId != null">
+                AND `movieId`= #{movieId}
+            </if>
+            <if test="url_id != null and url_id.length()>0">
+                AND `url_id` = #{url_id}
+            </if>
+            <if test="en_title != null and en_title.length()>0">
+                AND `en_title` = #{en_title}
+            </if>
+            <if test="cn_title != null and cn_title.length()>0">
+                AND `cn_title` = #{cn_title}
+            </if>
+            <if test="published_year != null and published_year.length()>0">
+                AND `published_year` = #{published_year}
+            </if>
+        </trim>
+    </select>
+
+</mapper>

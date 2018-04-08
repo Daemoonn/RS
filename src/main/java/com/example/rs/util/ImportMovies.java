@@ -29,7 +29,7 @@ public class ImportMovies {
 			LineNumberReader lineReader = new LineNumberReader(new FileReader(
 					"data/ml-latest-small/movies.csv"));
 			String line = "";
-			List<Movie> movieList = new ArrayList<Movie>();
+			List<Movie> movieList = new ArrayList<>();
 			count = 0;
 			while ((line = lineReader.readLine()) != null) {
 				count++;

@@ -16,9 +16,11 @@ import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
 import org.apache.mahout.common.RandomUtils;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component("MyItemBasedRecommender")
 public class MyItemBasedRecommender implements MyRecommender {
     private DataModel model;
     private ItemSimilarity similarity;
@@ -57,34 +59,39 @@ public class MyItemBasedRecommender implements MyRecommender {
     }
 
     public static void main(String[] args) {
-        //evaluate MyItemBasedRecommender
-        RandomUtils.useTestSeed();
-        DataModel model = new MyReloadFromJDBCDataModel().getMyDataModel();
-        RecommenderIRStatsEvaluator evaluator = new GenericRecommenderIRStatsEvaluator();
-        RecommenderBuilder recommenderBuilder = new RecommenderBuilder() {
-            @Override
-            public Recommender buildRecommender(DataModel model) throws TasteException {
-                ItemSimilarity similarity = new PearsonCorrelationSimilarity(model);
-                return new GenericItemBasedRecommender(model, similarity);
-            }
-        };
-        IRStatistics stats = null;
-        try {
-            stats = evaluator.evaluate(recommenderBuilder, null, model, null, 10, GenericRecommenderIRStatsEvaluator.CHOOSE_THRESHOLD, 1.0);
-        } catch (TasteException e) {
-            e.printStackTrace();
-        }
-        System.out.println(stats.getPrecision());
-        System.out.println(stats.getRecall());
-        System.out.println(stats.getF1Measure());
-
-        RecommenderEvaluator recommenderEvaluator = new AverageAbsoluteDifferenceRecommenderEvaluator();
-        double score = -1.0;
-        try {
-            score = recommenderEvaluator.evaluate(recommenderBuilder, null, model, 0.7, 1.0);
-        } catch (TasteException e) {
-            e.printStackTrace();
-        }
-        System.out.println(score);
+        MyItemBasedRecommender myItemBasedRecommender = new MyItemBasedRecommender();
+        System.out.println(myItemBasedRecommender.getRecommendedItemsByUserId(1, 3));
     }
+
+//    public static void main(String[] args) {
+//        //evaluate MyItemBasedRecommender
+//        RandomUtils.useTestSeed();
+//        DataModel model = new MyReloadFromJDBCDataModel().getMyDataModel();
+//        RecommenderIRStatsEvaluator evaluator = new GenericRecommenderIRStatsEvaluator();
+//        RecommenderBuilder recommenderBuilder = new RecommenderBuilder() {
+//            @Override
+//            public Recommender buildRecommender(DataModel model) throws TasteException {
+//                ItemSimilarity similarity = new PearsonCorrelationSimilarity(model);
+//                return new GenericItemBasedRecommender(model, similarity);
+//            }
+//        };
+//        IRStatistics stats = null;
+//        try {
+//            stats = evaluator.evaluate(recommenderBuilder, null, model, null, 10, GenericRecommenderIRStatsEvaluator.CHOOSE_THRESHOLD, 1.0);
+//        } catch (TasteException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(stats.getPrecision());
+//        System.out.println(stats.getRecall());
+//        System.out.println(stats.getF1Measure());
+//
+//        RecommenderEvaluator recommenderEvaluator = new AverageAbsoluteDifferenceRecommenderEvaluator();
+//        double score = -1.0;
+//        try {
+//            score = recommenderEvaluator.evaluate(recommenderBuilder, null, model, 0.7, 1.0);
+//        } catch (TasteException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(score);
+//    }
 }

@@ -5,16 +5,11 @@ import java.util.Date;
 
 public class User implements Serializable{
 
-    private static final long serialVersionUID = 339622874632624826L;
-
     private String loginId;
     private String password;
+    private MovieDetail[] ratedMovies;
     private Date createTime;
     private Date updateTime;
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public String getLoginId() {
         return loginId;
@@ -46,6 +41,14 @@ public class User implements Serializable{
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public MovieDetail[] getPreferences() {
+        return ratedMovies;
+    }
+
+    public void setPreferences(MovieDetail[] ratedMovies) {
+        this.ratedMovies = ratedMovies;
     }
 
     @Override
