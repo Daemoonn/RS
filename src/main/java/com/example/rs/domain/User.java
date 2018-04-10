@@ -1,15 +1,15 @@
 package com.example.rs.domain;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 public class User implements Serializable{
 
     private String loginId;
     private String password;
-    private MovieDetail[] ratedMovies;
-    private Date createTime;
-    private Date updateTime;
+    private Integer createTime;
+    private Integer updateTime;
 
     public String getLoginId() {
         return loginId;
@@ -27,28 +27,20 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public Date getCreateTime() {
+    public Integer getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Integer createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public Integer getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(Integer updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public MovieDetail[] getPreferences() {
-        return ratedMovies;
-    }
-
-    public void setPreferences(MovieDetail[] ratedMovies) {
-        this.ratedMovies = ratedMovies;
     }
 
     @Override

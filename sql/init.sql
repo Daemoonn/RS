@@ -20,6 +20,7 @@ CREATE TABLE taste_preferences (
    user_id BIGINT NOT NULL,
    item_id BIGINT NOT NULL,
    preference FLOAT NOT NULL,
+   -- before 2038
    timestamp INTEGER NOT NULL DEFAULT 0,
    PRIMARY KEY (user_id, item_id),
    FOREIGN KEY (item_id) REFERENCES movies(movieId) ON DELETE CASCADE,
@@ -59,6 +60,17 @@ CREATE TABLE movies_details_back_3
 SELECT movies.movieId, url_id, title as 'en_title', cn_title, genres, movies.published_year, img_link, page_link, summary
 FROM movies LEFT JOIN movies_details
 ON movies.movieId = movies_details.movieId;
-
+-- change structure of movies_details
 DROP TABLE movies_details;
 CREATE TABLE movies_details SELECT * FROM movies_details_back_3;
+-- create user table
+CREATE TABLE `user` (
+	loginId BIGINT NOT NULL,
+    pwd VARCHAR(50) NOT NULL,
+    -- before 2038
+    createTime INTEGER NOT NULL DEFAULT 0,
+    updateTime INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (loginId)
+);
+-- add PRIMARY INDEX to movies_details for speeding up pagination
+ALTER TABLE movies_details ADD PRIMARY KEY(movieId);

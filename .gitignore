@@ -16,6 +16,7 @@ target/
 *.iml
 *.ipr
 data/movies_pic/
+src/main/resources/static/img/movies_pic
 
 ### NetBeans ###
 nbproject/private/

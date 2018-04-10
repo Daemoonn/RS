@@ -61,41 +61,41 @@ public class MyUserBasedRecommender implements MyRecommender{
         return  mostSimilarUsers;
     }
 
-    public static void main(String[] args) {
-        MyUserBasedRecommender myUserBasedRecommender = new MyUserBasedRecommender();
-        System.out.println(myUserBasedRecommender.getRecommendedItemsByUserId(1, 3));
-    }
-
 //    public static void main(String[] args) {
-//        //evaluate MyUserBasedRecommender
-//        RandomUtils.useTestSeed();
-//        DataModel model = new MyReloadFromJDBCDataModel().getMyDataModel();
-//        RecommenderIRStatsEvaluator evaluator = new GenericRecommenderIRStatsEvaluator();
-//        RecommenderBuilder recommenderBuilder = new RecommenderBuilder() {
-//            @Override
-//            public Recommender buildRecommender(DataModel model) throws TasteException {
-//                UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
-//                UserNeighborhood neighborhood = new NearestNUserNeighborhood(6, similarity, model);
-//                return new GenericUserBasedRecommender(model, neighborhood, similarity);
-//            }
-//        };
-//        IRStatistics stats = null;
-//        try {
-//            stats = evaluator.evaluate(recommenderBuilder, null, model, null, 10, GenericRecommenderIRStatsEvaluator.CHOOSE_THRESHOLD, 1.0);
-//        } catch (TasteException e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println(stats.getPrecision());
-//        System.out.println(stats.getRecall());
-//        System.out.println(stats.getF1Measure());
-//
-//        RecommenderEvaluator recommenderEvaluator = new AverageAbsoluteDifferenceRecommenderEvaluator();
-//        double score = -1.0;
-//        try {
-//            score = recommenderEvaluator.evaluate(recommenderBuilder, null, model, 0.7, 1.0);
-//        } catch (TasteException e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println(score);
+//        MyUserBasedRecommender myUserBasedRecommender = new MyUserBasedRecommender();
+//        System.out.println(myUserBasedRecommender.getRecommendedItemsByUserId(1, 3));
 //    }
+
+    public static void main(String[] args) {
+        //evaluate MyUserBasedRecommender
+        RandomUtils.useTestSeed();
+        DataModel model = new MyReloadFromJDBCDataModel().getMyDataModel();
+        RecommenderIRStatsEvaluator evaluator = new GenericRecommenderIRStatsEvaluator();
+        RecommenderBuilder recommenderBuilder = new RecommenderBuilder() {
+            @Override
+            public Recommender buildRecommender(DataModel model) throws TasteException {
+                UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
+                UserNeighborhood neighborhood = new NearestNUserNeighborhood(6, similarity, model);
+                return new GenericUserBasedRecommender(model, neighborhood, similarity);
+            }
+        };
+        IRStatistics stats = null;
+        try {
+            stats = evaluator.evaluate(recommenderBuilder, null, model, null, 10, GenericRecommenderIRStatsEvaluator.CHOOSE_THRESHOLD, 1.0);
+        } catch (TasteException e) {
+            e.printStackTrace();
+        }
+        System.out.println(stats.getPrecision());
+        System.out.println(stats.getRecall());
+        System.out.println(stats.getF1Measure());
+
+        RecommenderEvaluator recommenderEvaluator = new AverageAbsoluteDifferenceRecommenderEvaluator();
+        double score = -1.0;
+        try {
+            score = recommenderEvaluator.evaluate(recommenderBuilder, null, model, 0.7, 1.0);
+        } catch (TasteException e) {
+            e.printStackTrace();
+        }
+        System.out.println(score);
+    }
 }
