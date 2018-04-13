@@ -44,6 +44,7 @@
         <if test="radioChooser == 'eval_rank'">
             ORDER BY `avg2` DESC
         </if>
+        , movieId ASC
         LIMIT #{index}, #{pageSize}
     </select>
 

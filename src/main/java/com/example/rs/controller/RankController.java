@@ -14,7 +14,7 @@ public class RankController {
     private MovieDetailService movieDetailService;
 
     @PostMapping("/rank")
-    public ServerResponse getPureRankPage(String pageNum, String pageSize, String typeChooser, String radioChooser) {
+    public ServerResponse getRankPage(String pageNum, String pageSize, String typeChooser, String radioChooser) {
         System.out.println("pageNum:" + pageNum + " pageSize:" + pageSize + " typeChooser:"
                 + typeChooser + " radioChooser:" + radioChooser);
         return ServerResponse.createSuccessResponse(
