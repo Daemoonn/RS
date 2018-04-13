@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
     <script src="/js/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script>
+        var pageNum = 1;
+        var pageSize = 12;
+        var rowCou = 0;
+    </script>
 </head>
 <body>
     <div style="background-color: #f0f3f5; padding-top: 10px; padding-bottom: 5px">
@@ -44,76 +52,116 @@
             <div class="pull-left">
                 <div class="btn-group">
                     <label class="radio-inline" style="padding-left: 3em">
-                        <input type="radio" name="options" id="option1" checked>
+                        <input type="radio" name="options" id="pure_rank" checked />
+                        pure rank
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="options" id="option2" />
                         rank by time
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="options" id="option2">
+                        <input type="radio" name="options" id="option3" />
                         rank by evaluation
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="options" id="option3">
+                        <input type="radio" name="options" id="option4" />
                         rank by others
                     </label>
                 </div>
             </div>
             <div class="pull-right">
                 <label class="checkbox-inline" style="padding-right: 1em">
-                    <input type="checkbox">
+                    <input type="checkbox" />
                     not yet watched
                 </label>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-2">
-                <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+        <div id="pages">
+            <div id="row1" class="row">
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
+                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
+                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
+                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
+                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
+                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
+                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+                    </a>
+                </div>
             </div>
-            <div class="col-md-2">
-                <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-            </div>
-            <div class="col-md-2">
-                <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-            </div>
-            <div class="col-md-2">
-                <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-            </div>
-            <div class="col-md-2">
-                <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-            </div>
-            <div class="col-md-2">
-                <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+            <div id="row2" class="row">
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
+                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
+                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
+                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
+                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
+                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#">
+                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
+                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+                    </a>
+                </div>
             </div>
         </div>
+        <div class="row" style="margin-bottom: 50px; margin-top: 30px">
+            <a id="more" class="btn btn-link col-md-12">
+                more
+            </a>
+        </div>
         <div class="row">
-            <div class="col-md-2">
-                <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-            </div>
-            <div class="col-md-2">
-                <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-            </div>
-            <div class="col-md-2">
-                <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-            </div>
-            <div class="col-md-2">
-                <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-            </div>
-            <div class="col-md-2">
-                <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-            </div>
-            <div class="col-md-2">
-                <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
+            <div style="border-top: 1px dashed #ddd; color: #999; padding: 6px 0; overflow: hidden">
+                <span style="float: left">© 2005－2018 kunban.com, all rights reserved 阿香煎饼果子有限摊</span>
             </div>
         </div>
     </div>

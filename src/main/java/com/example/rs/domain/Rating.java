@@ -1,6 +1,8 @@
 package com.example.rs.domain;
 
-public class Rating {
+import java.io.Serializable;
+
+public class Rating implements Serializable {
 	private long user_id;
 	private long movie_id;
 	private float rating;

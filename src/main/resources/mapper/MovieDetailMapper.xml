@@ -13,6 +13,15 @@
         <result column="summary" property="summary" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <resultMap id="PageResultMap" type="com.example.rs.vo.PageMovie">
+        <id column="movieId" property="movieId" jdbcType="BIGINT"/>
+        <result column="en_title" property="en_title" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="pageSelectIdwithName" parameterType="java.lang.Integer" resultMap="PageResultMap">
+        SELECT movieId, en_title FROM movies_details ORDER BY movieId LIMIT #{index}, #{pageSize}
+    </select>
+
     <select id="selectConditions" resultMap="BaseResultMap">
         SELECT * FROM `movies_details`
         <trim prefix="WHERE" prefixOverrides="AND">

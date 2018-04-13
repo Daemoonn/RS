@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class countTypesNum {
+public class CountTypesNum {
 
     public static void main(String[] args) {
         int c = 0;

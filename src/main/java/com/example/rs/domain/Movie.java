@@ -1,11 +1,13 @@
 package com.example.rs.domain;
 
 import com.example.rs.util.*;
+
+import java.io.Serializable;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Movie {
+public class Movie implements Serializable {
 	private long id;
 	private String name;
 	private String year;
