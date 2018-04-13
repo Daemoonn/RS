@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class PageMovie implements Serializable {
     private long movieId;
     private String en_title;
+    private double avg2;
 
     public long getMovieId() {
         return movieId;
@@ -20,5 +21,13 @@ public class PageMovie implements Serializable {
 
     public void setEn_title(String en_title) {
         this.en_title = en_title;
+    }
+
+    public double getAvg2() {
+        return avg2;
+    }
+
+    public void setAvg2(double avg2) {
+        this.avg2 = avg2;
     }
 }

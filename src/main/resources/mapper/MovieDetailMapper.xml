@@ -16,10 +16,35 @@
     <resultMap id="PageResultMap" type="com.example.rs.vo.PageMovie">
         <id column="movieId" property="movieId" jdbcType="BIGINT"/>
         <result column="en_title" property="en_title" jdbcType="VARCHAR"/>
+        <result column="avg2" property="avg2" jdbcType="DOUBLE"/>
     </resultMap>
 
-    <select id="pageSelectIdwithName" parameterType="java.lang.Integer" resultMap="PageResultMap">
-        SELECT movieId, en_title FROM movies_details ORDER BY movieId LIMIT #{index}, #{pageSize}
+    <!--<select id="pageSelectIdwithName" parameterType="java.lang.Integer" resultMap="PageResultMap">-->
+        <!--SELECT movieId, en_title FROM movies_details ORDER BY movieId LIMIT #{index}, #{pageSize}-->
+    <!--</select>-->
+
+    <select id="pageSelectIdwithName" parameterType="com.example.rs.vo.PageInfo" resultMap="PageResultMap">
+        SELECT movieId, en_title, ROUND(AVG(preference) * 2.0, 1) as `avg2`
+        FROM taste_preferences JOIN movies_details ON item_id = movieId
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="typeChooser != 'All'">
+                AND `genres` LIKE concat(concat('%',#{typeChooser}),'%')
+            </if>
+            <if test="radioChooser == 'time_rank'">
+                AND `published_year` != 'no published year'
+            </if>
+        </trim>
+        GROUP BY item_id
+        <if test="radioChooser == 'pure_rank'">
+            ORDER BY movieId
+        </if>
+        <if test="radioChooser == 'time_rank'">
+            ORDER BY published_year DESC
+        </if>
+        <if test="radioChooser == 'eval_rank'">
+            ORDER BY `avg2` DESC
+        </if>
+        LIMIT #{index}, #{pageSize}
     </select>
 
     <select id="selectConditions" resultMap="BaseResultMap">

@@ -13,6 +13,8 @@
         var pageNum = 1;
         var pageSize = 12;
         var rowCou = 0;
+        var typeChooser = 'All';
+        var radioChooser = 'pure_rank';
     </script>
 </head>
 <body>
@@ -23,27 +25,28 @@
     </div>
     <div class="container" align="center">
         <h2 class="text-left"><strong>Choose movies</strong></h2>
-        <div class="btn-group pull-left">
-            <button type="button" class="btn btn-link">Film-Noir</button>
-            <button type="button" class="btn btn-link">Action</button>
-            <button type="button" class="btn btn-link">Adventure</button>
-            <button type="button" class="btn btn-link">Horror</button>
-            <button type="button" class="btn btn-link">Romance</button>
-            <button type="button" class="btn btn-link">War</button>
-            <button type="button" class="btn btn-link">Western</button>
-            <button type="button" class="btn btn-link">Documentary</button>
-            <button type="button" class="btn btn-link">Sci-Fi</button>
-            <button type="button" class="btn btn-link">Drama</button>
-            <button type="button" class="btn btn-link">Thriller</button>
-            <button type="button" class="btn btn-link">Crime</button>
-            <button type="button" class="btn btn-link">Fantasy</button>
-            <button type="button" class="btn btn-link">Animation</button>
-            <button type="button" class="btn btn-link">IMAX</button>
-            <button type="button" class="btn btn-link">Comedy</button>
-            <button type="button" class="btn btn-link">Mystery</button>
-            <button type="button" class="btn btn-link">Children</button>
-            <button type="button" class="btn btn-link">Musical</button>
-            <button type="button" class="btn btn-link">Others</button>
+        <div id="types" class="btn-group pull-left">
+            <button id="All" type="button" class="btn btn-primary rank">All</button>
+            <button id="Film-Noir" type="button" class="btn btn-link rank">Film-Noir</button>
+            <button id="Action" type="button" class="btn btn-link rank">Action</button>
+            <button id="Adventure" type="button" class="btn btn-link rank">Adventure</button>
+            <button id="Horror" type="button" class="btn btn-link rank">Horror</button>
+            <button id="Romance" type="button" class="btn btn-link rank">Romance</button>
+            <button id="War" type="button" class="btn btn-link rank">War</button>
+            <button id="Western" type="button" class="btn btn-link rank">Western</button>
+            <button id="Documentary" type="button" class="btn btn-link rank">Documentary</button>
+            <button id="Sci-Fi" type="button" class="btn btn-link rank">Sci-Fi</button>
+            <button id="Drama" type="button" class="btn btn-link rank">Drama</button>
+            <button id="Thriller" type="button" class="btn btn-link rank">Thriller</button>
+            <button id="Crime" type="button" class="btn btn-link rank">Crime</button>
+            <button id="Fantasy" type="button" class="btn btn-link rank">Fantasy</button>
+            <button id="Animation" type="button" class="btn btn-link rank">Animation</button>
+            <button id="IMAX" type="button" class="btn btn-link rank">IMAX</button>
+            <button id="Comedy" type="button" class="btn btn-link rank">Comedy</button>
+            <button id="Mystery" type="button" class="btn btn-link rank">Mystery</button>
+            <button id="Children" type="button" class="btn btn-link rank">Children</button>
+            <button id="Musical" type="button" class="btn btn-link rank">Musical</button>
+            <button id="Others" type="button" class="btn btn-link rank">Others</button>
         </div>
         <div class="row">
             <hr class="col-md-12"/>
@@ -52,20 +55,16 @@
             <div class="pull-left">
                 <div class="btn-group">
                     <label class="radio-inline" style="padding-left: 3em">
-                        <input type="radio" name="options" id="pure_rank" checked />
+                        <input class="rank" type="radio" name="options" id="pure_rank" checked />
                         pure rank
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="options" id="option2" />
+                        <input class="rank" type="radio" name="options" id="time_rank" />
                         rank by time
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="options" id="option3" />
+                        <input class="rank" type="radio" name="options" id="eval_rank" />
                         rank by evaluation
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="options" id="option4" />
-                        rank by others
                     </label>
                 </div>
             </div>
@@ -77,82 +76,82 @@
             </div>
         </div>
         <div id="pages">
-            <div id="row1" class="row">
-                <div class="col-md-2">
-                    <a href="#">
-                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-                    </a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#">
-                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-                    </a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#">
-                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-                    </a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#">
-                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-                    </a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#">
-                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-                    </a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#">
-                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-                    </a>
-                </div>
-            </div>
-            <div id="row2" class="row">
-                <div class="col-md-2">
-                    <a href="#">
-                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-                    </a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#">
-                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-                    </a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#">
-                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-                    </a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#">
-                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-                    </a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#">
-                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-                    </a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#">
-                        <img src="/img/movies_pic/318.webp" class="img-thumbnail"/>
-                        <p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>
-                    </a>
-                </div>
-            </div>
+            <!--<div id="row1" class="row">-->
+                <!--<div class="col-md-2">-->
+                    <!--<a href="#">-->
+                        <!--<img src="/img/movies_pic/318.webp" class="img-thumbnail"/>-->
+                        <!--<p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-2">-->
+                    <!--<a href="#">-->
+                        <!--<img src="/img/movies_pic/318.webp" class="img-thumbnail"/>-->
+                        <!--<p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-2">-->
+                    <!--<a href="#">-->
+                        <!--<img src="/img/movies_pic/318.webp" class="img-thumbnail"/>-->
+                        <!--<p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-2">-->
+                    <!--<a href="#">-->
+                        <!--<img src="/img/movies_pic/318.webp" class="img-thumbnail"/>-->
+                        <!--<p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-2">-->
+                    <!--<a href="#">-->
+                        <!--<img src="/img/movies_pic/318.webp" class="img-thumbnail"/>-->
+                        <!--<p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-2">-->
+                    <!--<a href="#">-->
+                        <!--<img src="/img/movies_pic/318.webp" class="img-thumbnail"/>-->
+                        <!--<p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div id="row2" class="row">-->
+                <!--<div class="col-md-2">-->
+                    <!--<a href="#">-->
+                        <!--<img src="/img/movies_pic/318.webp" class="img-thumbnail"/>-->
+                        <!--<p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-2">-->
+                    <!--<a href="#">-->
+                        <!--<img src="/img/movies_pic/318.webp" class="img-thumbnail"/>-->
+                        <!--<p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-2">-->
+                    <!--<a href="#">-->
+                        <!--<img src="/img/movies_pic/318.webp" class="img-thumbnail"/>-->
+                        <!--<p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-2">-->
+                    <!--<a href="#">-->
+                        <!--<img src="/img/movies_pic/318.webp" class="img-thumbnail"/>-->
+                        <!--<p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-2">-->
+                    <!--<a href="#">-->
+                        <!--<img src="/img/movies_pic/318.webp" class="img-thumbnail"/>-->
+                        <!--<p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-2">-->
+                    <!--<a href="#">-->
+                        <!--<img src="/img/movies_pic/318.webp" class="img-thumbnail"/>-->
+                        <!--<p>The Shawshank Redemption <strong style="color: #e09015">9.6</strong></p>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
         <div class="row" style="margin-bottom: 50px; margin-top: 30px">
             <a id="more" class="btn btn-link col-md-12">

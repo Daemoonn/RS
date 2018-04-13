@@ -1,6 +1,8 @@
 package com.example.rs.dao;
 
 import com.example.rs.domain.MovieDetail;
+import com.example.rs.vo.PageInfo;
+import com.example.rs.vo.PageMovie;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +11,7 @@ import java.util.Map;
 
 @Repository
 public interface MovieDetailDao {
-    List<MovieDetail> pageSelectIdwithName(@Param("index") int index, @Param("pageSize") int pageSize);
+    List<PageMovie> pageSelectIdwithName(@Param("index") int index, @Param("pageSize") int pageSize);
+    List<PageMovie> pageSelectIdwithName(PageInfo pageInfo);
     List<MovieDetail> selectConditions(Map<String,Object> map);
 }
