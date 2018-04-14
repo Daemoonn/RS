@@ -1,0 +1,20 @@
+html h1 {
+    font-size: 26px;
+}
+
+h1 {
+    font-weight: bold;
+    color: #494949;
+    padding: 0 0 15px 0;
+    line-height: 1.1;
+}
+
+h1 .year {
+    color: #888;
+}
+
+.col-md-4 .row {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 3%;
+}

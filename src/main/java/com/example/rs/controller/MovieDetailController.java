@@ -1,13 +1,18 @@
 package com.example.rs.controller;
 
+import com.example.rs.domain.MovieDetail;
 import com.example.rs.service.MovieDetailService;
 import com.example.rs.vo.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -15,8 +20,9 @@ public class MovieDetailController {
     @Autowired
     private MovieDetailService movieDetailService;
 
-    @PostMapping("/searchMovieDetail")
-    public ServerResponse searchMovieDetail(String movieId, String url_id, String en_title, String cn_title, String published_year) {
+    @GetMapping("/searchMovieDetail")
+    public ModelAndView searchMovieDetail(Model model, String movieId, String url_id, String en_title, String cn_title, String published_year, String avg2) {
+        ModelAndView modelAndView = new ModelAndView("movie_detail");
         Map<String,Object> map=new HashMap<>();
         if (movieId != null) {
             map.put("movieId", movieId);
@@ -33,6 +39,13 @@ public class MovieDetailController {
         if (published_year != null) {
             map.put("published_year", published_year);
         }
-        return ServerResponse.createSuccessResponse(movieDetailService.findConditions(map));
+        List<MovieDetail> mdl = movieDetailService.findConditions(map);
+        if (!mdl.isEmpty()) {
+            System.out.println("put " + mdl.get(0).getMovieId() + " " + mdl.get(0).getEn_title() + " movieDetail into model");
+            model.addAttribute("movieDetail", mdl.get(0));
+            model.addAttribute("avg2", avg2);
+        }
+//        return ServerResponse.createSuccessResponse(movieDetailService.findConditions(map));
+        return modelAndView;
     }
 }

@@ -1,10 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="/css/movie_detail.css"/>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/util.js"></script>
+        <script src="/bootstrap/js/bootstrap.js"></script>
+        <title>Title</title>
+    </head>
+    <body>
+        <div style="background-color: #f0f3f5; padding-top: 10px; padding-bottom: 5px">
+            <div class="container" align="center">
+                <h1 class="text-left" style="color: #27a; font-size: 36px"><strong>KunBan Movies</strong></h1>
+            </div>
+        </div>
+        <div class="container" align="center">
+            <h1>
+                <span th:text="${movieDetail.en_title} + ' ' + ${movieDetail.cn_title}"></span>
+                <span class="year" th:text="'(' + ${movieDetail.published_year} + ')'"></span>
+            </h1>
+            <div class="row" align="center">
+                <div class="col-md-4">
+                    <img th:src="'/img/movies_pic/' + ${movieDetail.movieId} + '.webp'" class="img-thumbnail" style="float: right"/>
+                </div>
+                <div class="col-md-4" align="left">
+                    <div class="row">
+                        <span>English Name:</span>
+                        <span th:text="${movieDetail.en_title}"></span>
+                    </div>
+                    <div class="row">
+                        <span>Chinese Name:</span>
+                        <span th:text="${movieDetail.cn_title}"></span>
+                    </div>
+                    <div class="row">
+                        <span>Year:</span>
+                        <span th:text="${movieDetail.published_year}"></span>
+                    </div>
+                    <div class="row">
+                        <span>Summary:</span>
+                        <span th:text="${movieDetail.summary}"></span>
+                    </div>
+                    <div class="row">
+                        <span>DouBan link:</span>
+                        <a th:href="${movieDetail.page_link}" th:text="${movieDetail.page_link}" target="_blank"></a>
+                    </div>
+                </div>
+                <div class="col-md-4" style="border-left: 1px solid #eaeaea" align="left">
+                    <div class="row">
+                        <span style="font-size: 12px; color: #9b9b9b">KunBan Rating:</span>
+                    </div>
+                    <div class="row">
+                        <span><strong style="font-size: 28px; color: #494949; font-weight: normal" th:text="${avg2}"></strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer navbar-fixed-bottom ">
+            <div class="container">
+                <div style="border-top: 1px dashed #ddd; color: #999; padding: 6px 0; overflow: hidden">
+                    <span style="float: left">© 2005－2018 kunban.com, all rights reserved 阿香煎饼果子有限摊</span>
+                </div>
+            </div>
+        </footer>
+    </body>
 </html>

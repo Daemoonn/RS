@@ -1,29 +1,3 @@
-document.addEventListener("error", function (e) {
-    var elem = e.target;
-    if (elem.tagName.toLowerCase() == 'img') {
-        var url = "/img/movies_pic/"+ elem.id +".jpg";
-        var isJpg = false;
-        $.get(url, function (data, status) {
-            if (status == "success") {
-                elem.src = url;
-                isJpg = true;
-            }
-        });
-        if (!isJpg) {
-            elem.src = "/img/movies_pic/default.png";
-        }
-    }
-}, true);
-
-// function checkImg() {
-//     $("img").on("error", function () {
-//         $(this).attr("src", "/img/movies_pic/default.png");
-//     });
-// }
-//
-// function changeImg(t) {
-//     $(t).attr("src", "/img/movies_pic/default.png");
-// }
 
 $(function () {
     refreshIndexPage("init");
@@ -49,7 +23,7 @@ var refreshIndexPage = function (option) {
                     var pageMovie = list[i];
                     $("#" + rowId).append(
                         "<div class=\"col-md-2\">\n" +
-                        "    <a href=\"#\">\n" +
+                        "    <a href=\"searchMovieDetail?movieId=" + pageMovie.movieId + "&avg2=" + pageMovie.avg2.toFixed(1) + "\" target='_blank'>\n" +
                         "        <img id='" + pageMovie.movieId + "' src=\"/img/movies_pic/"+ pageMovie.movieId + ".webp\" class=\"img-thumbnail\"/>\n" +
                         "        <p>" + pageMovie.en_title + " <strong style=\"color: #e09015\">" + pageMovie.avg2.toFixed(1) + "</strong></p>\n" +
                         "    </a>\n" +
