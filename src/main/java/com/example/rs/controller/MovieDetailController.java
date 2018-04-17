@@ -48,4 +48,13 @@ public class MovieDetailController {
 //        return ServerResponse.createSuccessResponse(movieDetailService.findConditions(map));
         return modelAndView;
     }
+
+    @PostMapping("/insertRating")
+    public void insertRating(String rating) {
+        System.out.println("Wula");
+        if (rating == null || rating.equals("")) {
+            System.out.println("null");
+        }
+        System.out.println(rating);
+    }
 }
