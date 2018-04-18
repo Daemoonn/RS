@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>KunBan</title>
@@ -18,9 +18,11 @@
     </script>
 </head>
 <body>
-    <div style="background-color: #f0f3f5; padding-top: 10px; padding-bottom: 5px">
+    <div style="background-color: #00b4ef; padding-top: 10px; padding-bottom: 5px">
         <div class="container" align="center">
-            <h1 class="text-left" style="color: #27a; font-size: 36px"><strong>KunBan Movies</strong></h1>
+            <h1 class="text-left" style="color: #fff; font-size: 36px"><strong>KunBan Movies</strong></h1>
+            <button id="log_out" class="btn btn-link" style="float: right; color: #ffff" onclick="window.location.href='/logout'">Logout</button>
+            <label th:text="${session.user}" style="float: right; color: #ffff"></label>
         </div>
     </div>
     <div class="container" align="center">

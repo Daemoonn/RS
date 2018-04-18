@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.rs.dao.RatingDao">
+    <resultMap id="BaseResultMap" type="com.example.rs.domain.Rating">
+        <id column="user_id" property="user_id" jdbcType="BIGINT"/>
+        <result column="item_id" property="movie_id" jdbcType="BIGINT"/>
+        <result column="preference" property="rating" jdbcType="FLOAT"/>
+        <result column="timestamp" property="timestamp" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <insert id="insertOne" parameterType="com.example.rs.domain.Rating">
+        INSERT INTO `taste_preferences` VALUES (#{user_id}, #{movie_id}, #{rating}, unix_timestamp(now()))
+    </insert>
+
+    <select id="isExist" parameterType="java.lang.Long"  resultType="java.lang.Integer">
+        SELECT EXISTS(SELECT user_id FROM taste_preferences WHERE user_id = #{arg0} AND item_id = #{arg1})
+    </select>
+
+    <update id="updateOne" parameterType="com.example.rs.domain.Rating">
+        UPDATE `taste_preferences`
+        SET preference = #{rating}, `timestamp` = unix_timestamp(now())
+        WHERE user_id = #{user_id} AND item_id = #{movie_id}
+    </update>
+
+    <delete id="deleteOne" parameterType="java.lang.Long">
+        DELETE FROM `taste_preferences` WHERE user_id = #{arg0} AND item_id = #{arg1}
+    </delete>
+
+    <select id="selectOne" parameterType="java.lang.Long"  resultType="java.lang.Float">
+        SELECT `preference` FROM `taste_preferences` WHERE user_id = #{arg0} AND item_id = #{arg1}
+    </select>
+
+</mapper>

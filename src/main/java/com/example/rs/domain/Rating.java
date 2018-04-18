@@ -8,6 +8,22 @@ public class Rating implements Serializable {
 	private float rating;
 	private int timestamp;
 
+	public Rating() {
+
+	}
+
+	public Rating(long user_id, long movie_id, float rating) {
+		this.user_id = user_id;
+		this.movie_id = movie_id;
+		this.rating = rating;
+	}
+
+	public Rating(String user_id, String movie_id, String rating) {
+		this.user_id = Long.parseLong(user_id);
+		this.movie_id = Long.parseLong(movie_id);
+		this.rating = Float.parseFloat(rating);
+	}
+
 	public long getUser_id() {
 		return this.user_id;
 	}

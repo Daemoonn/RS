@@ -23,7 +23,8 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                 "/login/**",
                 "/login_page/**",
                 "/bootstrap/**",
-                "/Font-Awesome-4.5.0/**"
+                "/Font-Awesome-4.5.0/**",
+                "/css/**"
         };
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns(pathPatterns).excludePathPatterns(excludePathPatterns);
 
