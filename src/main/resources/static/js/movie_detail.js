@@ -1,7 +1,11 @@
 $(window).on('beforeunload', function(){
     var rating = $("#rating-star").val();
     var movieId = $("#movieId").val();
-    $.post("/crudRating", { movieId: movieId, rating: rating });
+    var nowStar = $("#rating-star").val();
+    // "4.0" != "4"
+    if (parseFloat(nowStar) != parseFloat(initStar)) {
+        $.post("/crudRating", { movieId: movieId, rating: rating });
+    }
     return 'Are you sure you want to leave?';
 });
 

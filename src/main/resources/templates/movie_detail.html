@@ -8,7 +8,17 @@
         <script src="/js/util.js"></script>
         <script src="/js/movie_detail.js"></script>
         <script src="/bootstrap/js/bootstrap.js"></script>
-
+        <script>
+            var initStar;
+            $(function () {
+                initStar = $("#rating-star").val();
+                // if (initStar == null || initStar == "") {
+                //     alert("initStar is null");
+                // } else {
+                //     alert(initStar);
+                // }
+            });
+        </script>
         <!-- default styles -->
         <!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">-->
         <link href="/bootstrap-star-rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
