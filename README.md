@@ -16,3 +16,11 @@ http://mahout.apache.org/docs/0.13.0/api/docs/mahout-integration/
 Page path:
   org.apache.mahout.cf.taste.impl.model.jdbc
     Class MySQLJDBCDataModel
+
+![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/home_page1.png)
+
+![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/home_page2.png)
+
+![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/detail_page1.png)
+
+![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/detail_page2.png)
