@@ -29,6 +29,16 @@ public class MovieDetailServiceImpl implements MovieDetailService {
     }
 
     @Override
+    public List<PageMovie> selectIdwithName(Long movieId) {
+        return movieDetailDao.selectIdwithName(movieId);
+    }
+
+    @Override
+    public List<PageMovie> selectForGenres(Long movieId) {
+        return movieDetailDao.selectForGenres(movieId);
+    }
+
+    @Override
     public List<MovieDetail> findConditions(Map<String, Object> map) {
         return movieDetailDao.selectConditions(map);
     }

@@ -7,7 +7,7 @@ public interface RatingService {
 
     void addRating(Rating rating);
 
-    void delRating(String userId, String movieId);
+    void delRating(Rating rating);
 
     void updateRating(Rating rating);
 

@@ -1,4 +1,5 @@
 package com.example.rs.model.recommender.impl;
+import com.example.rs.domain.Rating;
 import com.example.rs.model.datamodel.impl.MyReloadFromJDBCDataModel;
 import com.example.rs.model.recommender.MyRecommender;
 import org.apache.mahout.cf.taste.common.TasteException;
@@ -27,6 +28,7 @@ public class MyItemBasedRecommender implements MyRecommender {
     private ItemBasedRecommender recommender;
 
     public MyItemBasedRecommender() {
+        System.out.println("new MyItemBasedRecommender");
         model = new MyReloadFromJDBCDataModel().getMyDataModel();
         try {
             similarity = new PearsonCorrelationSimilarity(model); // computing the similarity
@@ -37,7 +39,7 @@ public class MyItemBasedRecommender implements MyRecommender {
     }
 
     @Override
-    public List<RecommendedItem> getRecommendedItemsByUserId(long userID,int size){
+    public List<RecommendedItem> getRecommendedItemsByUserId(long userID,int size) {
         List<RecommendedItem> recommendations = null;
         try {
             recommendations = recommender.recommend(userID, size); // get recommend results
@@ -46,6 +48,11 @@ public class MyItemBasedRecommender implements MyRecommender {
             e.printStackTrace();
         }
         return recommendations;
+    }
+
+    @Override
+    public void refresh() {
+        recommender.refresh(null);
     }
 
     public List<RecommendedItem> getItemsMostSimilar(long itemId,int size) {
@@ -60,7 +67,10 @@ public class MyItemBasedRecommender implements MyRecommender {
 
     public static void main(String[] args) {
         MyItemBasedRecommender myItemBasedRecommender = new MyItemBasedRecommender();
-        System.out.println(myItemBasedRecommender.getRecommendedItemsByUserId(1, 3));
+        long startTime = System.currentTimeMillis();
+        myItemBasedRecommender.refresh();
+        long endTime = System.currentTimeMillis();
+        System.out.println("程序运行时间：" + (endTime - startTime) + "ms");
     }
 
 //    public static void main(String[] args) {

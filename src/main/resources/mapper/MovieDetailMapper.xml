@@ -16,6 +16,7 @@
     <resultMap id="PageResultMap" type="com.example.rs.vo.PageMovie">
         <id column="movieId" property="movieId" jdbcType="BIGINT"/>
         <result column="en_title" property="en_title" jdbcType="VARCHAR"/>
+        <result column="genres" property="genres" jdbcType="VARCHAR"/>
         <result column="avg2" property="avg2" jdbcType="DOUBLE"/>
     </resultMap>
 
@@ -46,6 +47,24 @@
         </if>
         , movieId ASC
         LIMIT #{index}, #{pageSize}
+    </select>
+
+    <select id="selectIdwithName" parameterType="java.lang.Long" resultMap="PageResultMap">
+        SELECT movieId, en_title, ROUND(AVG(preference) * 2.0, 1) as `avg2`
+        FROM taste_preferences JOIN movies_details ON item_id = movieId
+        <trim prefix="WHERE" prefixOverrides="AND">
+            AND movieId = #{movieId}
+        </trim>
+        GROUP BY item_id
+    </select>
+
+    <select id="selectForGenres" resultMap="PageResultMap">
+        SELECT movieId, en_title, genres, ROUND(AVG(preference) * 2.0, 1) as `avg2`
+        FROM taste_preferences JOIN movies_details ON item_id = movieId
+        <trim prefix="WHERE" prefixOverrides="AND">
+            AND movieId = #{movieId}
+        </trim>
+        GROUP BY item_id
     </select>
 
     <select id="selectConditions" resultMap="BaseResultMap">

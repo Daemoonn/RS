@@ -2,6 +2,7 @@ package com.example.rs.controller;
 
 import com.example.rs.domain.MovieDetail;
 import com.example.rs.domain.Rating;
+import com.example.rs.model.recommender.MyRecommender;
 import com.example.rs.service.MovieDetailService;
 import com.example.rs.service.RatingService;
 import com.example.rs.vo.ServerResponse;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import com.example.rs.config.WebSecurityConfig;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -94,16 +96,16 @@ public class MovieDetailController {
             System.out.println("no rating");
             String userId = (String)session.getAttribute(WebSecurityConfig.SESSION_KEY);
             System.out.println("userId:" + userId + " movieId:" + movieId + " rating:" + rating);
-            ratingService.delRating(userId, movieId);
+            ratingService.delRating(new Rating(userId, movieId));
         }
     }
 
     @PostMapping("/crudRating")
     public void crudRating(HttpSession session, String movieId, String rating) {
         String userId = (String)session.getAttribute(WebSecurityConfig.SESSION_KEY);
-        System.out.println("userId:" + userId + " movieId:" + movieId);
+        System.out.println("userId:" + userId + " movieId:" + movieId + "rating:" + rating);
         if (rating == null || rating.equals("")) {
-            ratingService.delRating(userId, movieId);
+            ratingService.delRating(new Rating(userId, movieId));
             System.out.println("clear rating");
         } else {
             Rating rating1 = new Rating(userId, movieId, rating);

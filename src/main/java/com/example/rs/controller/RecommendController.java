@@ -12,7 +12,7 @@ public class RecommendController {
     private RecommendService recommendService;
 
     @PostMapping("/recommend")
-    public ServerResponse recommend(String userId, String size) {
-        return ServerResponse.createSuccessResponse(recommendService.getRecommendations(Long.parseLong(userId), Integer.parseInt(size)));
+    public ServerResponse recommend(String userId, String genres, String size) {
+        return ServerResponse.createSuccessResponse(recommendService.getRecommendations1(Long.parseLong(userId), genres, Integer.parseInt(size)));
     }
 }

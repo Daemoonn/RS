@@ -43,8 +43,9 @@
             <div class="container" align="center">
                 <h1 class="text-left" style="color: #fff; font-size: 36px"><strong>KunBan Movies</strong></h1>
                 <button id="log_out" class="btn btn-link" style="float: right; color: #ffff" onclick="window.location.href='/logout'">Logout</button>
-                <label th:text="${session.user}" style="float: right; color: #ffff"></label>
+                <label id="userId" th:text="${session.user}" style="float: right; color: #ffff"></label>
                 <input id="movieId" th:value="${movieDetail.movieId}" type="hidden">
+                <input id="genres" th:value="${movieDetail.genres}" type="hidden">
             </div>
         </div>
         <div class="container" align="center">
@@ -64,6 +65,10 @@
                     <div class="row">
                         <span>Chinese Name:</span>
                         <span th:text="${movieDetail.cn_title}"></span>
+                    </div>
+                    <div class="row">
+                        <span>Genres:</span>
+                        <span th:text="${movieDetail.genres}"></span>
                     </div>
                     <div class="row">
                         <span>Year:</span>
@@ -102,6 +107,10 @@
                 </div>
                 <div class="col-md-8">
                 </div>
+            </div>
+            <div id="ucfr" class="row" align="left" style="margin-left: 65px">
+            </div>
+            <div id="icfr" class="row" align="left" style="margin-left: 65px">
             </div>
             <div class="row" style="margin-top: 50px">
                 <div style="border-top: 1px dashed #ddd; color: #999; padding: 6px 0; overflow: hidden">
