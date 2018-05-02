@@ -21,8 +21,10 @@ var appendPageMovie = function(recommendList, option) {
     var rowId;
     if (option == 'ucf') {
         rowId = 'ucfr';
-    } else {
+    } else if (option == 'icf') {
         rowId = 'icfr';
+    } else {
+        rowId = 'mostSimir';
     }
     for (var i = 0; i < recommendList.length; i++) {
         var pageMovie = recommendList[i];
@@ -38,19 +40,32 @@ var appendPageMovie = function(recommendList, option) {
 }
 
 var refreshRecommend = function () {
-    var userId = $("#userId").text(), genres = $("#genres").val();
+    var userId = $("#userId").text(), genres = $("#genres").val(), movieId = $("#movieId").val();
     var size = 6;
-    $.post("/recommend", {userId: userId, genres: genres, size: size}, function (res) {
+    $.post("/recommend", {userId: userId, movieId: movieId, genres: genres, size: size}, function (res) {
         if (res.code == 200) {
             var ucfl = res.data.ucf;
             var icfl = res.data.icf;
+            var mostSimi = res.data.mostSimilarItems;
+            if (mostSimi.length > 0) {
+                $("#mostSimir").html("");
+                $("#mostSimir").append(
+                    "<div class=\"col-md-4\" style='padding-top: 30px; padding-bottom: 15px'>\n" +
+                    "    Most Similar Items Recommend:\n" +
+                    "</div>\n" +
+                    "<div class=\"col-md-8\" style='padding-top: 30px; padding-bottom: 15px' >\n" +
+                    "&nbsp;" +
+                    "</div>"
+                );
+                appendPageMovie(mostSimi, 'mostSimi');
+            }
             if (ucfl.length > 0) {
                 $("#ucfr").html("");
                 $("#ucfr").append(
-                    "<div class=\"col-md-4\" style='padding-top: 30px; padding-bottom: 15px'>\n" +
+                    "<div class=\"col-md-4\" style='padding-bottom: 15px'>\n" +
                     "    User-based Recommend:\n" +
                     "</div>\n" +
-                    "<div class=\"col-md-8\" style='padding-top: 30px; padding-bottom: 15px'>\n" +
+                    "<div class=\"col-md-8\" style='padding-bottom: 15px'>\n" +
                     "&nbsp;" +
                     "</div>"
                 );

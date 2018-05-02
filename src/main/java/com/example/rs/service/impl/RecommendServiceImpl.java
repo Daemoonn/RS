@@ -2,6 +2,7 @@ package com.example.rs.service.impl;
 
 import com.example.rs.domain.MovieDetail;
 import com.example.rs.model.recommender.MyRecommender;
+import com.example.rs.model.recommender.impl.MyItemBasedRecommender;
 import com.example.rs.service.MovieDetailService;
 import com.example.rs.service.RecommendService;
 import com.example.rs.vo.PageMovie;
@@ -19,7 +20,7 @@ public class RecommendServiceImpl implements RecommendService {
     private MyRecommender ucfRecommender;
 
     @Resource(name = "MyItemBasedRecommender")
-    private MyRecommender icfRecommender;
+    private MyItemBasedRecommender icfRecommender;
 
     @Autowired
     private MovieDetailService movieDetailService;
@@ -27,14 +28,17 @@ public class RecommendServiceImpl implements RecommendService {
     private final static int candidateNum = 50;
 
     @Override
-    public Map<String, Object> getRecommendations1(long userId, String genres, int size) {
+    public Map<String, Object> getRecommendations1(long userId, long movieId, String genres, int size) {
         Map<String, Object> m = new HashMap<>();
         List<PageMovie> ucfDetails = new ArrayList<>();
         List<PageMovie> icfDetails = new ArrayList<>();
+        List<PageMovie> mostSimilarDetails = new ArrayList<>();
         List<RecommendedItem> ucfRecommendations = ucfRecommender.getRecommendedItemsByUserId(userId, candidateNum);
         List<RecommendedItem> icfRecommendations = icfRecommender.getRecommendedItemsByUserId(userId, candidateNum);
+        List<RecommendedItem> mostSimilarItems = icfRecommender.getItemsMostSimilar(movieId, candidateNum);
         Map<Integer, Integer> ucfm = new HashMap<>();
         Map<Integer, Integer> icfm = new HashMap<>();
+        Map<Integer, Integer> mostm = new HashMap<>();
         String[] genresList = genres.split(",");
         for (int i = 0; i < genresList.length; i++) {
             genresList[i] = genresList[i].trim();
@@ -51,6 +55,11 @@ public class RecommendServiceImpl implements RecommendService {
             icfDetails = getSortedDetails(icfRecommendations, icfDetails, genresList, icfm, size);
         }
         m.put("icf", icfDetails);
+
+        if (mostSimilarItems != null) {
+            mostSimilarDetails = getSortedDetails(mostSimilarItems, mostSimilarDetails, genresList, mostm, size);
+        }
+        m.put("mostSimilarItems", mostSimilarDetails);
 
         return m;
     }

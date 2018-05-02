@@ -27,17 +27,28 @@ public class LoginController {
         return modelAndView;
     }
     @PostMapping("/login/loginCheck")
-    public String loginCheck(@ModelAttribute User user, HttpSession session) {
+    public ModelAndView loginCheck(@ModelAttribute User user, Model model, HttpSession session) {
         String loginId = user.getLoginId();
+        try {
+            Long.parseLong(loginId);
+        } catch (Exception e) {
+            model.addAttribute("warning", "Wrong user name!");
+            return new ModelAndView("login");
+        }
         String pwd = user.getPassword();
         User userf = userService.findByUserId(loginId);
         if (userf != null && userf.getPassword().equals(pwd)) {
             // session never timeout
             session.setMaxInactiveInterval(0);
             session.setAttribute(WebSecurityConfig.SESSION_KEY, loginId);
-            return "redirect:/home";
+            return new ModelAndView("redirect:/home");
         } else {
-            return "redirect:/login/getLoginPage";
+            if (userf == null) {
+                model.addAttribute("warning", "Wrong user name!");
+            } else {
+                model.addAttribute("warning", "Wrong password!");
+            }
+            return new ModelAndView("login");
         }
     }
 }
