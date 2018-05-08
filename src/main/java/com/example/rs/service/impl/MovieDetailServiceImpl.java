@@ -3,6 +3,7 @@ package com.example.rs.service.impl;
 import com.example.rs.dao.MovieDetailDao;
 import com.example.rs.domain.MovieDetail;
 import com.example.rs.util.CalcIndex;
+import com.example.rs.util.ChineseJudger;
 import com.example.rs.vo.PageInfo;
 import com.example.rs.vo.PageMovie;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,15 @@ public class MovieDetailServiceImpl implements MovieDetailService {
     @Override
     public List<PageMovie> pageSelectIdwithName(PageInfo pageInfo) {
         return movieDetailDao.pageSelectIdwithName(pageInfo);
+    }
+
+    @Override
+    public List<PageMovie> searchWithName(PageInfo pageInfo) {
+        if (ChineseJudger.isChinese(pageInfo.getKeyWord())) {
+            return movieDetailDao.searchByCnName(pageInfo);
+        } else {
+            return movieDetailDao.searchByEnName(pageInfo);
+        }
     }
 
     @Override

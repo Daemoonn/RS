@@ -10,6 +10,7 @@ public class PageInfo implements Serializable {
     private int index;
     private String typeChooser;
     private String radioChooser;
+    private String keyWord;
 
     public PageInfo() {
     }
@@ -20,6 +21,13 @@ public class PageInfo implements Serializable {
         this.index = CalcIndex.parseIndex(pageNum, pageSize);
         this.typeChooser = typeChooser;
         this.radioChooser = radioChooser;
+    }
+
+    public PageInfo(int pageNum, int pageSize, String keyWord) {
+        setPageNum(pageNum);
+        setPageSize(pageSize);
+        setIndex(CalcIndex.parseIndex(pageNum, pageSize));
+        setKeyWord(keyWord);
     }
 
     public int getPageNum() {
@@ -61,4 +69,13 @@ public class PageInfo implements Serializable {
     public void setRadioChooser(String radioChooser) {
         this.radioChooser = radioChooser;
     }
+
+    public String getKeyWord() {
+        return keyWord;
+    }
+
+    public void setKeyWord(String keyWord) {
+        this.keyWord = keyWord;
+    }
+    
 }

@@ -74,3 +74,6 @@ CREATE TABLE `user` (
 );
 -- add PRIMARY INDEX to movies_details for speeding up pagination
 ALTER TABLE movies_details ADD PRIMARY KEY(movieId);
+-- add FULLTEXT KEY to movies_details for searching
+ALTER TABLE movies_details ADD FULLTEXT INDEX cn_ft_index (cn_title) WITH PARSER ngram;
+ALTER TABLE movies_details ADD FULLTEXT INDEX en_ft_index (en_title);

@@ -13,6 +13,8 @@ import java.util.Map;
 public interface MovieDetailDao {
     List<PageMovie> pageSelectIdwithName(@Param("index") int index, @Param("pageSize") int pageSize);
     List<PageMovie> pageSelectIdwithName(PageInfo pageInfo);
+    List<PageMovie> searchByCnName(PageInfo pageInfo);
+    List<PageMovie> searchByEnName(PageInfo pageInfo);
     List<PageMovie> selectIdwithName(@Param("movieId") Long movieId);
     List<PageMovie> selectForGenres(@Param("movieId") Long movieId);
     List<MovieDetail> selectConditions(Map<String,Object> map);

@@ -18,6 +18,15 @@
         <result column="en_title" property="en_title" jdbcType="VARCHAR"/>
         <result column="genres" property="genres" jdbcType="VARCHAR"/>
         <result column="avg2" property="avg2" jdbcType="DOUBLE"/>
+        <result column="lang" property="lang"/>
+    </resultMap>
+
+    <resultMap id="cnPageResultMap" type="com.example.rs.vo.PageMovie">
+        <id column="movieId" property="movieId" jdbcType="BIGINT"/>
+        <result column="cn_title" property="cn_title" jdbcType="VARCHAR"/>
+        <result column="genres" property="genres" jdbcType="VARCHAR"/>
+        <result column="avg2" property="avg2" jdbcType="DOUBLE"/>
+        <result column="lang" property="lang"/>
     </resultMap>
 
     <!--<select id="pageSelectIdwithName" parameterType="java.lang.Integer" resultMap="PageResultMap">-->
@@ -56,6 +65,26 @@
             AND movieId = #{movieId}
         </trim>
         GROUP BY item_id
+    </select>
+
+    <select id="searchByCnName" parameterType="com.example.rs.vo.PageInfo" resultMap="cnPageResultMap">
+        SELECT movieId, cn_title, ROUND(AVG(preference) * 2.0, 1) AS `avg2`,
+        MATCH(cn_title) AGAINST (#{keyWord} IN NATURAL LANGUAGE MODE) AS `relevance`, 'cn' AS `lang`
+        FROM taste_preferences JOIN movies_details ON item_id = movieId
+        WHERE MATCH(cn_title) AGAINST (#{keyWord} IN NATURAL LANGUAGE MODE)
+        GROUP BY item_id
+        ORDER BY `relevance` DESC, movieId ASC
+        LIMIT #{index}, #{pageSize}
+    </select>
+
+    <select id="searchByEnName" parameterType="com.example.rs.vo.PageInfo" resultMap="PageResultMap">
+        SELECT movieId, en_title, ROUND(AVG(preference) * 2.0, 1) as `avg2`,
+        MATCH(en_title) AGAINST (#{keyWord} IN NATURAL LANGUAGE MODE) AS `relevance`, 'en' AS `lang`
+        FROM taste_preferences JOIN movies_details ON item_id = movieId
+        WHERE MATCH(en_title) AGAINST (#{keyWord} IN NATURAL LANGUAGE MODE)
+        GROUP BY item_id
+        ORDER BY `relevance` DESC, movieId ASC
+        LIMIT #{index}, #{pageSize}
     </select>
 
     <select id="selectForGenres" resultMap="PageResultMap">

@@ -20,7 +20,21 @@
 <body>
     <div style="background-color: #00b4ef; padding-top: 10px; padding-bottom: 5px">
         <div class="container" align="center">
-            <h1 class="text-left" style="color: #fff; font-size: 36px"><strong>KunBan Movies</strong></h1>
+            <div class="row">
+                <a href="/home">
+                    <h1 class="text-left" style="color: #fff; font-size: 36px; float: left; padding-right: 15px; padding-left: 15px">
+                        <strong>KunBan Movies</strong>
+                    </h1>
+                </a>
+                <form action="/search1" method="post">
+                    <div class="input-group col-md-7" style="margin-top: 20px; float: left">
+                        <input name="key_word" type="text" class="form-control"placeholder="Please input key word"/>
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-info btn-search">Search</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
             <button id="log_out" class="btn btn-link" style="float: right; color: #ffff" onclick="window.location.href='/logout'">Logout</button>
             <label th:text="${session.user}" style="float: right; color: #ffff"></label>
         </div>

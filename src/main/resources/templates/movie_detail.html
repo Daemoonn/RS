@@ -19,6 +19,11 @@
                 // }
             });
         </script>
+        <style>
+            a:hover {
+                text-decoration: none;
+            }
+        </style>
         <!-- default styles -->
         <!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">-->
         <link href="/bootstrap-star-rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
@@ -41,7 +46,9 @@
     <body>
         <div style="background-color: #00b4ef; padding-top: 10px; padding-bottom: 5px">
             <div class="container" align="center">
-                <h1 class="text-left" style="color: #fff; font-size: 36px"><strong>KunBan Movies</strong></h1>
+                <a href="/home">
+                    <h1 class="text-left" style="color: #fff; font-size: 36px"><strong>KunBan Movies</strong></h1>
+                </a>
                 <button id="log_out" class="btn btn-link" style="float: right; color: #ffff" onclick="window.location.href='/logout'">Logout</button>
                 <label id="userId" th:text="${session.user}" style="float: right; color: #ffff"></label>
                 <input id="movieId" th:value="${movieDetail.movieId}" type="hidden">
