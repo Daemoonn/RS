@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.*;
 
 @Service
@@ -93,6 +95,41 @@ public class RecommendServiceImpl implements RecommendService {
         }
         m.put("ucf", ucfDetails);
         m.put("icf", icfDetails);
+        return m;
+    }
+
+    @Override
+    public Map<String, Object> getRecommendations3(long movieId) {
+        Map<String, Object> m = new HashMap<>();
+        List<PageMovie> icfDetails = new ArrayList<>();
+
+        try {
+            //需传入的参数
+            System.out.println("start;;;" + movieId);
+            //设置命令行传入参数
+            String[] pargs = new String[] { "python", "D:/My Files/PyProjects/kun/b.py", String.valueOf(movieId)};
+            Process pr = Runtime.getRuntime().exec(pargs);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+                List<PageMovie> mdl = movieDetailService.selectIdwithName(Long.parseLong(line.trim()));
+                if (mdl.size() > 0) {
+                    icfDetails.add(mdl.get(0));
+                } else {
+                    System.out.println("empty mdl in icf");
+                }
+            }
+            in.close();
+            pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        m.put("icf", icfDetails);
+
         return m;
     }
 

@@ -13,6 +13,6 @@ public class RecommendController {
 
     @PostMapping("/recommend")
     public ServerResponse recommend(String userId, String movieId, String genres, String size) {
-        return ServerResponse.createSuccessResponse(recommendService.getRecommendations1(Long.parseLong(userId), Long.parseLong(movieId), genres, Integer.parseInt(size)));
+        return ServerResponse.createSuccessResponse(recommendService.getRecommendations3(Long.parseLong(movieId)));
     }
 }

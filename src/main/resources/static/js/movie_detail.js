@@ -44,33 +44,7 @@ var refreshRecommend = function () {
     var size = 6;
     $.post("/recommend", {userId: userId, movieId: movieId, genres: genres, size: size}, function (res) {
         if (res.code == 200) {
-            var ucfl = res.data.ucf;
             var icfl = res.data.icf;
-            var mostSimi = res.data.mostSimilarItems;
-            if (mostSimi.length > 0) {
-                $("#mostSimir").html("");
-                $("#mostSimir").append(
-                    "<div class=\"col-md-4\" style='padding-top: 30px; padding-bottom: 15px'>\n" +
-                    "    Most Similar Items Recommend:\n" +
-                    "</div>\n" +
-                    "<div class=\"col-md-8\" style='padding-top: 30px; padding-bottom: 15px' >\n" +
-                    "&nbsp;" +
-                    "</div>"
-                );
-                appendPageMovie(mostSimi, 'mostSimi');
-            }
-            if (ucfl.length > 0) {
-                $("#ucfr").html("");
-                $("#ucfr").append(
-                    "<div class=\"col-md-4\" style='padding-bottom: 15px'>\n" +
-                    "    User-based Recommend:\n" +
-                    "</div>\n" +
-                    "<div class=\"col-md-8\" style='padding-bottom: 15px'>\n" +
-                    "&nbsp;" +
-                    "</div>"
-                );
-                appendPageMovie(ucfl, 'ucf');
-            }
             if (icfl.length > 0) {
                 $("#icfr").html("");
                 $("#icfr").append(
