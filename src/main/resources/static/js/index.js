@@ -36,6 +36,34 @@ var refreshIndexPage = function (option) {
             alert("error!")
         }
     });
+    var userId = $("#userId").text();
+    if (option == "init") {
+        $("#r2u").html("");
+        $.post("/SVDrecommend", {userId: userId}, function (res) {
+            if (res.code == 200) {
+                var list = res.data.svd;
+                for (var r = 1; r <= 2; r++) {
+                    rowCou = rowCou + 1;
+                    var rowId = "row" + rowCou;
+                    $("#r2u").append("<div id=\""+ rowId +"\" class=\"row\">\n");
+                    for (var i = (r - 1) * (list.length / 2); i < r * (list.length / 2); i++) {
+                        var pageMovie = list[i];
+                        $("#" + rowId).append(
+                            "<div class=\"col-md-2\">\n" +
+                            "    <a href=\"searchMovieDetail?movieId=" + pageMovie.movieId + "&avg2=" + pageMovie.avg2.toFixed(1) + "\" target='_blank'>\n" +
+                            "        <img id='" + pageMovie.movieId + "' src=\"/img/movies_pic/"+ pageMovie.movieId + ".webp\" class=\"img-thumbnail\"/>\n" +
+                            "        <p>" + pageMovie.en_title + " <strong style=\"color: #e09015\">" + pageMovie.avg2.toFixed(1) + "</strong></p>\n" +
+                            "    </a>\n" +
+                            "</div>\n"
+                        );
+                    }
+                    $("#r2u").append("</div>\n");
+                }
+            } else {
+                alert("error!")
+            }
+        });
+    }
 }
 
 $(function () {

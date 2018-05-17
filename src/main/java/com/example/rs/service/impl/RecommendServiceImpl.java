@@ -5,6 +5,7 @@ import com.example.rs.model.recommender.MyRecommender;
 import com.example.rs.model.recommender.impl.MyItemBasedRecommender;
 import com.example.rs.service.MovieDetailService;
 import com.example.rs.service.RecommendService;
+import com.example.rs.util.CerTrans;
 import com.example.rs.vo.PageMovie;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,6 +131,23 @@ public class RecommendServiceImpl implements RecommendService {
 
         m.put("icf", icfDetails);
 
+        return m;
+    }
+
+    @Override
+    public Map<String, Object> getSVDRecommendations(long userId) {
+        Map<String, Object> m = new HashMap<>();
+        List<PageMovie> svdDetails = new ArrayList<>();
+        Long[] svdRecommends = CerTrans.getRecommend(userId);
+        for (int i = 0; i < 12; i++) {
+            List<PageMovie> mdl = movieDetailService.selectIdwithName(svdRecommends[i]);
+            if (mdl.size() > 0) {
+                svdDetails.add(mdl.get(0));
+            } else {
+                System.out.println("empty mdl in svd");
+            }
+        }
+        m.put("svd", svdDetails);
         return m;
     }
 

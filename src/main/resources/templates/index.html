@@ -36,10 +36,14 @@
                 </form>
             </div>
             <button id="log_out" class="btn btn-link" style="float: right; color: #ffff" onclick="window.location.href='/logout'">Logout</button>
-            <label th:text="${session.user}" style="float: right; color: #ffff"></label>
+            <label id="userId" th:text="${session.user}" style="float: right; color: #ffff"></label>
         </div>
     </div>
     <div class="container" align="center">
+        <h2 class="text-left"><strong>Recommend for you</strong></h2>
+        <div id="r2u">
+            <!-- from index.js -->
+        </div>
         <h2 class="text-left"><strong>Choose movies</strong></h2>
         <div id="types" class="btn-group pull-left">
             <button id="All" type="button" class="btn btn-primary rank">All</button>
@@ -99,6 +103,9 @@
                 more
             </a>
         </div>
+        <!--<div id="r2u">-->
+            <!--&lt;!&ndash; from index.js &ndash;&gt;-->
+        <!--</div>-->
         <div class="row">
             <div style="border-top: 1px dashed #ddd; color: #999; padding: 6px 0; overflow: hidden">
                 <span style="float: left">© 2005－2018 kunban.com, all rights reserved 阿香煎饼果子有限摊</span>

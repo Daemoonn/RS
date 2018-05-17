@@ -17,6 +17,8 @@ target/
 *.ipr
 data/movies_pic/
 src/main/resources/static/img/movies_pic
+lib/
+sql/Dump20180509/
 
 ### NetBeans ###
 nbproject/private/
