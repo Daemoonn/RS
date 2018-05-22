@@ -18,14 +18,20 @@ Page path:
   org.apache.mahout.cf.taste.impl.model.jdbc
     Class MySQLJDBCDataModel
 
+home_page1
 ![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/home_page1.png)
 
+home_page2
 ![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/home_page2.png)
 
+detail_page1
 ![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/detail_page1.png)
 
+detail_page2
 ![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/detail_page2.png)
 
+search_page1
 ![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/search_page1.png)
 
+search_page2
 ![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/search_page2.png)
