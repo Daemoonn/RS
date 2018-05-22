@@ -1,5 +1,5 @@
 # RS
-A recommend system based on SpringBoot,Mahout
+A recommend system based on SpringBoot,python
 
 Files in src/main/python/spiderman are web crawlers, to get summary and pictures for the
 movies in movieLens.It may cost a few hours for ten thousand movies.It uses a proxy pool
@@ -11,8 +11,7 @@ Run files in sql/Dump20180509 to create mysql tables and import data into MySQL.
 
 Run util/ImportMovies util/ImportRatings to import data into mysql tables from .csv
 
-<font size=4>mahout is not used in this branch, this branch is use text that predicted by python or
-directly call python script</font>
+#### mahout is not used in this branch, this branch is use text that predicted by python or directly call python script
 
 Download mahout 0.13 from http://mahout.apache.org/ and import into project
 
@@ -28,22 +27,22 @@ Page path:
     Class MySQLJDBCDataModel
 
 home_page1
-![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/home_page1.png)
+![Alt text](https://github.com/Daemoonn/RS/raw/kun/screen_shots/home_page1.png)
 
 home_page2
-![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/home_page2.png)
+![Alt text](https://github.com/Daemoonn/RS/raw/kun/screen_shots/home_page2.png)
 
 home_page3
-![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/home_page3.png)
+![Alt text](https://github.com/Daemoonn/RS/raw/kun/screen_shots/home_page3.png)
 
 detail_page1
-![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/detail_page1.png)
+![Alt text](https://github.com/Daemoonn/RS/raw/kun/screen_shots/detail_page1.png)
 
 detail_page2
-![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/detail_page2.png)
+![Alt text](https://github.com/Daemoonn/RS/raw/kun/screen_shots/detail_page2.png)
 
 search_page1
-![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/search_page1.png)
+![Alt text](https://github.com/Daemoonn/RS/raw/kun/screen_shots/search_page1.png)
 
 search_page2
-![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/search_page2.png)
+![Alt text](https://github.com/Daemoonn/RS/raw/kun/screen_shots/search_page2.png)
