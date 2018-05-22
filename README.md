@@ -1,13 +1,14 @@
 # RS
 A recommend system based on SpringBoot,Mahout
 
-Run sql/init.sql to create mysql tables.
+Run files in sql/Dump20180509 to create mysql tables and import data into MySQL.
 
 Run util/ImportMovies util/ImportRatings to import data into mysql tables from .csv
 
 Download mahout 0.13 from http://mahout.apache.org/ and import into project
 
-Solve some dependencies by importing google-collections-0.9.jar
+Solve some dependencies by importing jars https://drive.google.com/open?id=11L6D4xXBCvUIeLsbqjClTms0mF2wIraT
+Or BaiduNetdisk link：https://pan.baidu.com/s/1RuYB5hOkw03R5lALmrag2w password：kzdi
 
 Look through table structure, compatible data type and some MySql settings
 suggested by mahout API 0.13.0
