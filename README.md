@@ -25,3 +25,7 @@ Page path:
 ![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/detail_page1.png)
 
 ![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/detail_page2.png)
+
+![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/search_page1.png)
+
+![Alt text](https://github.com/Daemoonn/RS/raw/master/screen_shots/search_page2.png)
